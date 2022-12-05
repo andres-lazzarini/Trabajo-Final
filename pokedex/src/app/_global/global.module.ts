@@ -2,18 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './_components/header/header.component';
 import { FooterComponent } from './_components/footer/footer.component';
-import { SidebarComponent } from './_components/sidebar/sidebar/sidebar.component';
+import { SidebarComponent } from './_components/sidebar/sidebar.component';
+import { MainComponent } from './_components/main/main.component';
+import { RouterModule, Routes } from '@angular/router';
 
 
+const routes: Routes = [
+  {
+    path: '',
+    component: MainComponent
+  }];
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    MainComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule.forChild(routes)
   ]
 })
 export class GlobalModule { }
