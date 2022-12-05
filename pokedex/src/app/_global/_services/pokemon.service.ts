@@ -9,6 +9,6 @@ export class PokemonService {
   constructor(private http: HttpClient) { }
 
   public getPokemonTypes(url:string) {
-    return this.http.get(url + 'type');
+    return this.http.get(url + 'type?limit=18');
   }
 }
