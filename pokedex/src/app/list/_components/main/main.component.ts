@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { concat, Subscription } from 'rxjs';
 import { PokemonService } from '../../../_global/_services/pokemon.service'
 
@@ -13,7 +14,10 @@ export class MainComponent implements OnInit, OnDestroy{
 
   subscriptions: Subscription[] = [];
 
-  constructor(private pokemonService: PokemonService) {}
+  constructor(
+    private pokemonService: PokemonService,
+    private router: Router,
+    ) {}
 
   get pokemons(): any[] {
     return this.pokemonService.pokemons;
@@ -59,5 +63,9 @@ export class MainComponent implements OnInit, OnDestroy{
 
   filterPokemons(type:string) {
     this.pokemonService
+  }
+
+  redirect(name:any) {
+    this.router.navigate(["./view/", name]);
   }
 }

@@ -23,6 +23,11 @@ const routes: Routes = [
         path: 'types',
         loadChildren: () =>
           import('../filter/filter.module').then((m) => m.FilterModule),
+      },
+      {
+        path: 'view',
+        loadChildren: () =>
+          import('../pokemons/pokemons.module').then((m) => m.PokemonsModule),
       }
     ],
   }];
