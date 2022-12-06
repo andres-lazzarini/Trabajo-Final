@@ -26,4 +26,5 @@ export class SidebarComponent implements OnInit {
       console.log(res);
     });
   }
+
 }

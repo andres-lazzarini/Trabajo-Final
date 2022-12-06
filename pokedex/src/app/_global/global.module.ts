@@ -10,19 +10,28 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    component: MainComponent
+    component: MainComponent,
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+          import('../list/list.module').then(
+            (m) => m.ListModule
+          ),
+      }
+    ],
   }];
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    FooterComponent,
-    SidebarComponent,
-    MainComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule.forChild(routes)
-  ]
+    declarations: [
+        HeaderComponent,
+        FooterComponent,
+        SidebarComponent,
+        MainComponent,
+    ],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+    ]
 })
 export class GlobalModule { }
