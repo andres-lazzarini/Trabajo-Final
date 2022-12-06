@@ -1,7 +1,7 @@
 <nav class="main-menu">
   <ul>
       <li *ngFor="let type of pokeTypeList;">
-          <a href="#">
+          <a href="{{'./types/' + type.name}}">
               <img srcset="{{'../../../../assets/images/icons/' + type.name + '.png'}}"  alt="" width="30px" height="30px">
               <span class="nav-text">
                   {{ type.name | titlecase}}

@@ -18,6 +18,11 @@ const routes: Routes = [
           import('../list/list.module').then(
             (m) => m.ListModule
           ),
+      },
+      {
+        path: 'types',
+        loadChildren: () =>
+          import('../filter/filter.module').then((m) => m.FilterModule),
       }
     ],
   }];

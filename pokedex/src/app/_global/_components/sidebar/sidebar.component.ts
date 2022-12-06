@@ -23,7 +23,7 @@ export class SidebarComponent implements OnInit {
     .subscribe(res => {
       this.pokeTypeList = res;
       this.pokeTypeList = this.pokeTypeList.results;
-      console.log(res);
+      // console.log(res);
     });
   }
 
