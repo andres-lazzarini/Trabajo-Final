@@ -11,6 +11,9 @@ import { PokemonService } from '../../../_global/_services/pokemon.service'
 
 export class MainComponent implements OnInit, OnDestroy{
   loading: boolean = false;
+  variablex: string = '';
+  pokemons: any[] = [];
+  mainpokemons: any[] = [];
 
   subscriptions: Subscription[] = [];
 
@@ -19,15 +22,17 @@ export class MainComponent implements OnInit, OnDestroy{
     private router: Router,
     ) {}
 
-  get pokemons(): any[] {
-    return this.pokemonService.pokemons;
-  }
+  // get pokemons(): any[] {
+  //   return this.pokemonService.pokemons;
+  // }
 
   set subscription(subscription: Subscription) {
     this.subscriptions.push(subscription);
   }
 
   ngOnInit(): void {
+    this.pokemons = this.pokemonService.pokemons;
+    this.mainpokemons = this.pokemonService.pokemons;
     if (!this.pokemons.length) {
       this.loadMore();
     }
@@ -49,6 +54,7 @@ export class MainComponent implements OnInit, OnDestroy{
           );
         this.subscription = concat(...details).subscribe((response: any) => {
           this.pokemonService.pokemons.push(response);
+          this.pokemons = this.pokemonService.pokemons;
         });
       },
       (error) => console.log('Error Occurred:', error),
@@ -67,5 +73,10 @@ export class MainComponent implements OnInit, OnDestroy{
 
   redirect(name:any) {
     this.router.navigate(["./view/", name]);
+  }
+
+  search() {
+    this.pokemons = this.mainpokemons;
+    this.pokemons = this.pokemons.filter((pokemon:any) => pokemon.name.indexOf(this.variablex) !== -1);
   }
 }
