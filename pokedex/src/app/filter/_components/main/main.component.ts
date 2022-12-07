@@ -1,6 +1,6 @@
 import { PokemonService } from './../../../_global/_services/pokemon.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FilterService } from '../../_services/filter.service';
 
 @Component({
@@ -17,6 +17,7 @@ export class MainComponent implements OnInit{
     private route: ActivatedRoute,
     private filterService:FilterService,
     private pokemonService: PokemonService,
+    private router: Router,
     ) { }
 
   ngOnInit(): void {
@@ -40,6 +41,10 @@ export class MainComponent implements OnInit{
 
   getType(pokemon: any): string {
     return this.pokemonService.getType(pokemon);
+  }
+
+  redirect(name:any) {
+    this.router.navigate(["./view/", name]);
   }
 
 }

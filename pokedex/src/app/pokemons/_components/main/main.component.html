@@ -1,1 +1,17 @@
-<p>main works!</p>
+<div class="main-container">
+  <div class="content">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/{{id}}.png" alt="">
+    <div class="details">
+      <h1 class="sweet-title"><span>{{pokemonName | titlecase}}</span></h1>
+      <ul>
+        <li *ngFor="let stat of pokemonDetails">
+          <p>{{stat.stat.name | titlecase}}:</p>
+          <div class="progress">
+            <div  class="progress-bar" style="height: 24px;" [style.width.%]="stat.base_stat">
+              <span class="progress-number">{{stat.base_stat}}</span></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
